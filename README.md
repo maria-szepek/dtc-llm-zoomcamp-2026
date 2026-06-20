@@ -78,3 +78,8 @@ When we build AI systems, the prompts consists of 2 parts:
 2nd part is user prompt (user)
 
 
+# RAG helpers 
+
+* we will now try to replace some of the modular functionalities such as search etc. 
+* we created ingest.py, and rag_helper.py (with RAGBase class). 
+* additionally we want to be able to replace the search library and use instead of minsearch for example elastiquesearch or sqlitesearch
