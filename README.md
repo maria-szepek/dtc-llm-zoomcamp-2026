@@ -149,3 +149,18 @@ With sqlitesearch (two processes): Ingestion (runs once): fetch data -> parse ->
 
 Part 2: Function calling, the agentic loop, frameworks
 
+# Function calling 
+
+* see agents.ipynb
+
+*summary: the path was a bit longer but now the agent is in control and can decide whats happening with the user 
+* query and what to do with the too: now the llm is thedriver!
+
+* that is what makes the call to the llm agentic!
+
+* agent has a certain task: (in this case to help the user student)
+* agent has memory
+* agent has tools (to actually carry out the task)
+
+
+
