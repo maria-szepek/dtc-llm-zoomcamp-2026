@@ -139,3 +139,13 @@ With sqlitesearch (two processes): Ingestion (runs once): fetch data -> parse ->
 * search function: rag becomes the basis for agents 
 
 * next: for the agents: llm between user and the database and let the llm decide what to send to the db
+
+# PART 2 - AGENTS 
+
+* RAG: the flow is rigid. if we make a mistake in the question for example a typo, with lexical search, the way we are doing it now, it's not going to result something useful
+* -> the agent should take control of what is happening, instead of the fixed flow 
+* different system prompt: "hey you need to help the course participants to find answer to this questions" + "you can use this search function": then the llm will notice the typo and figure it out. -> agentic rag 
+
+
+Part 2: Function calling, the agentic loop, frameworks
+
