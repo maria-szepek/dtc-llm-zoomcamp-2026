@@ -164,3 +164,15 @@ Part 2: Function calling, the agentic loop, frameworks
 
 
 
+# make more precises instructions: 
+* guardrails (something that checks the input and prevents the user from asking off-topic questions): https://aishippinglabs.com/workshops/agent-with-guardrails
+
+* 
+
+
+
+# so far we wrote everything ourselves, now we want to use a framework. 
+
+* for educational purposes we will use ToyAIKit that has been developed by alexey during a workshop a year ago and not supposed to be used in production is up to us to explore 
+
+# SEE agents.ipynb
