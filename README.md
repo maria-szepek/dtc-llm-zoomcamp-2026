@@ -66,6 +66,20 @@ Another lightweight alternative library is minsearch library:
 We index the question, section, and answer fields as text (they'll be tokenized and ranked),
 and the course field as a keyword (for filtering).
 
+ex.:
+
+{'id': '74eb249bbf',
+ 'course': 'llm-zoomcamp',
+ 'section': 'General Course-Related Questions',
+ 'question': 'I just discovered the course. Can I still join?',
+ 'answer': 'Yes, but if you want to receive a certificate, you need to submit your project while we’re still accepting submissions.'}
+
+ text f: all the fields that an b usd  to oerform a search
+
+keyword field: soething that we need an exact match for
+
+
+
 BOOSTING:
 
 We can say that certain fields will be more useful than others.
@@ -83,3 +97,45 @@ When we build AI systems, the prompts consists of 2 parts:
 * we will now try to replace some of the modular functionalities such as search etc. 
 * we created ingest.py, and rag_helper.py (with RAGBase class). 
 * additionally we want to be able to replace the search library and use instead of minsearch for example elastiquesearch or sqlitesearch
+
+
+# using sqlitesearch instead in in-mem minsearch 
+
+* if the data set is larger or i want to persist that across multiple sesssions and i and i dont want to do that every time i use this 
+* e.g. elasticsearch is persistent 
+* e.g. sqlitesearch is persistent
+
+
+Now: 
+
+
+[FAQ.json -> INGEST ] -> [persistent KB]  <--> [ASSISTANT <-> USER
+                                          -> PROMPT -> LLM]
+
+* in sqlitesearch there is this thing called FTS5 (Full-text-search)
+* in this case the persistent db is sqlite, in our project it can be postgres, elasticsearch, quadrant, or whatever 
+
+* in the vectorsearch lesson we'll use other db 
+
+* Comparison: 
+
+With minsearch (single process): Startup: fetch data -> parse -> index -> ready; Every restart: repeat all steps
+
+With sqlitesearch (two processes): Ingestion (runs once): fetch data -> parse -> write to faq.db; Query (runs every time): open faq.db -> search -> ready
+
+
+
+
+# If i wanted to use elasticsearch, i woul need to extend the rag class and redefine function search to use elasticsearch!
+
+
+# wrap up: 
+* rag is most common application for llms in the industry
+
+* ingestion, 1. retrieval, 2. building prompt, 3. doing the llm 
+
+* different db: e.g. vector search db 
+* different llms 
+* search function: rag becomes the basis for agents 
+
+* next: for the agents: llm between user and the database and let the llm decide what to send to the db
