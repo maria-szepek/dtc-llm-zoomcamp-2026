@@ -1,0 +1,8 @@
+.venv
+faq.db*
+*.db
+*.db-shm
+*.db-wal
+
+# Ignore Python cache directories and compiled files
+__pycache__/
