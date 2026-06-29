@@ -10,6 +10,8 @@ python version:
 - uv python install 3.14
 - uv venv --python 3.14 
 
+# at some point i needed to run: ``` $ uv add --dev ipykernel ```
+
 env auto load:
 ```
 uv tool install dirdotenv
