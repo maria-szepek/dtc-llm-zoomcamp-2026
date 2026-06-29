@@ -1,8 +1,6 @@
 # dtc-llm-zoomcamp-2026
 
 
-# THESE ARE HERE THE NOTES FROM 01-AGENTIC-RAG - TO BE UPDATED
-
 # setup: 
 
 python version:
