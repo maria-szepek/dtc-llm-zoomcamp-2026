@@ -121,3 +121,8 @@ docker exec -it course-assistant-pg psql -U user -d course_assistant \
 * usually we would experiment with different queries in the jupyter notebook and in this course we'll just go to the script part directly 
 
 * script: db_query.py
+
+# Dashboard
+
+* won't use grafana yet, instead everything into a simple streamlit dashboard: often we don't even need postgres and don't need to bother and use sqlite, the reason we use postgres now is that we will want to connect it with grafana later. 
+
