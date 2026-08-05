@@ -53,8 +53,71 @@ def get_conversations(limit=10):
 
 # for example. 
 
+# -> dataclass: because its better than the output we get from get_conversation
 
+@dataclass
+class Stats:
+    total: int
+    avg_response_time: float
+    total_cost: float
+    avg_tokens: float
 
+# similar to get conversation, plus simple aggregation 
+def get_stats():
+    conn = get_db_connection()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT
+                    COUNT(*),
+                    AVG(response_time),
+                    SUM(cost),
+                    AVG(total_tokens)
+                FROM conversations
+            """)
+            row = cur.fetchone()
+    finally:
+        conn.close()
+
+    return Stats(
+        total=row[0],
+        avg_response_time=row[1],
+        total_cost=row[2],
+        avg_tokens=row[3],
+    )
+
+# relevance metrics 
+
+def get_relevance_stats():
+    conn = get_db_connection()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT relevance, COUNT(*)
+                FROM feedback
+                WHERE source = 'judge'
+                GROUP BY relevance
+            """)
+            rows = cur.fetchall()
+    finally:
+        conn.close()
+    return dict(rows)
+
+def get_user_feedback_stats():
+    conn = get_db_connection()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT
+                    SUM(CASE WHEN score > 0 THEN 1 ELSE 0 END),
+                    SUM(CASE WHEN score < 0 THEN 1 ELSE 0 END)
+                FROM feedback
+                WHERE source = 'user'
+            """)
+            row = cur.fetchone()
+    finally:
+        conn.close()
+    return row
 
 
 if __name__ == "__main__":
