@@ -226,6 +226,10 @@ where from to is oimportant for the date rane range fearyure to work
 * We don't always need this level of visibility 
 * we can use frameworks also such as language, streamlit, phoenix, his favorite=pydantic logfire, evaluation=evidently ai ... 
 
+- LANGFUSE and  ARIZE PHOENIX trace llm apps
+- pydantic logfire is alexey favorite for monitoring 
+- evidently for both and he uses it most for evaluation 
+
 Next steps: 
 * this system here is not necessarily production ready
 * we need asynch way of setting up relevance evaluation 
