@@ -1,0 +1,111 @@
+init:
+  version: 0.1.1
+  description: Shared rules, secrets handling, and workspace MCP for dlthub
+  tags:
+  - dlthub
+  - init
+  - rules
+  - secrets
+  - mcp
+  installed_at: '2026-08-06T22:42:40.209150+00:00'
+  agent: codex
+  files:
+    .codexignore:
+      sha3_256: 1aa4dc9286dd219dcb55399f388c5ee1f940ab5e399a42b644d488cba57a9ec0
+    .agents/skills/init-dlthub-workspace/SKILL.md:
+      sha3_256: 0641e3c3fc78e924050bf6dda703fc2072d1f52f73c500f66bdc964b0df96a3c
+  mcp_servers:
+  - dlt-workspace-mcp
+  name: init
+filesystem-pipeline:
+  version: 0.1.1
+  description: Load files (CSV, Parquet, JSONL, or custom) from local disk, S3, GCS,
+    Azure, or SFTP into a destination using dlt's filesystem source.
+  tags:
+  - dlthub
+  - filesystem
+  - s3
+  - gcs
+  - azure
+  - sftp
+  - csv
+  - parquet
+  - jsonl
+  dependencies:
+  - init
+  workflow_entry_skill: create-filesystem-pipeline
+  installed_at: '2026-08-06T22:42:40.219324+00:00'
+  agent: codex
+  files:
+    .agents/skills/add-incremental-loading/SKILL.md:
+      sha3_256: 8fd5ee5ae1bdaeca3d154871774bd8e16b0eabbc70fc1b5f1967554b7a61cadf
+    .agents/skills/create-filesystem-pipeline/SKILL.md:
+      sha3_256: 98109cbd084ab77fbfe33c1253a5b414e5466b3bd0581469c37e371ac8d33f60
+    .agents/skills/optimize-filesystem-performance/SKILL.md:
+      sha3_256: 630e89afb9739a4b37ad171ac750317fbff68fe425607852f0592eeb816dc474
+    .agents/skills/filesystem-pipeline-workflow/SKILL.md:
+      sha3_256: 8a75b2aa22b3587b109885a910ca9e110d11d0cb2681c49a2caf79acad61413d
+  name: filesystem-pipeline
+data-exploration:
+  version: 0.1.1
+  description: Quick insights from dlt pipeline data. Connect to a pipeline, profile
+    tables, plan charts, and assemble marimo dashboards.
+  tags:
+  - dlthub
+  - marimo
+  - ibis
+  - data-exploration
+  - dashboards
+  - altair
+  dependencies:
+  - init
+  workflow_entry_skill: explore-data
+  installed_at: '2026-08-06T23:24:27.911861+00:00'
+  agent: codex
+  files:
+    .agents/skills/build-notebook/SKILL.md:
+      sha3_256: a88f4c19fb10f5afcdcf389e11b938310d1457bf86fed0b28df9cab606961a91
+    .agents/skills/build-notebook/references/notebook-patterns.md:
+      sha3_256: 96d80469820be9e1beddd10961b0a588da526c7678a0d12561e24f30e91037d3
+    .agents/skills/explore-data/SKILL.md:
+      sha3_256: d703ba8cf43cd5564274df0b51bb2df791598c3de27f904ee71ce295595f6cee
+    .agents/skills/explore-data/references/analysis-plan-format.md:
+      sha3_256: 8fcb5223200f4e566432fda35be8b555b8a88274b9f1dc42c41a21c4d6ddbab5
+    .agents/skills/explore-data/references/dlt-relation-api.md:
+      sha3_256: a13cb108f3e47f13b85d54e98c5e486f2c7b12638e00b168ddffc9e33e745047
+    .agents/skills/data-exploration-workflow/SKILL.md:
+      sha3_256: d8471c6ae207c618d5f0efb6d886f7ffeec4f8edb42f2df4a9ece6f68653a160
+  name: data-exploration
+dlthub-platform:
+  version: 0.1.3
+  description: Deploy dlthub workspace and pipelines to the dltHub Platform
+  tags:
+  - dlthub
+  - deploy
+  - platform
+  dependencies:
+  - init
+  workflow_entry_skill: setup-runtime
+  installed_at: '2026-08-07T16:07:08.664975+00:00'
+  agent: codex
+  files:
+    .agents/skills/debug-deployment/SKILL.md:
+      sha3_256: 5b563de07842c361187e11729c58a7132633b086782bc14a5759dc2895322320
+    .agents/skills/deploy-workspace/SKILL.md:
+      sha3_256: f4388d846c21f0e76309c07f91d365d6c02b0c13d15d5c8910b1592d1f655f83
+    .agents/skills/deploy-workspace/advanced-patterns.md:
+      sha3_256: 6ae7f2d23c83cc074c50902688b2253c429cd89c39b692568f9f2f5f40243db8
+    .agents/skills/deploy-workspace/scheduling-triggers.md:
+      sha3_256: 2c67e4c1a8012d75f1943d7e874df69d8898219973eb295b42c5c706f7274f8f
+    .agents/skills/prepare-deployment/SKILL.md:
+      sha3_256: 161646d939986d76364188b6ee375a5e2d61754b570926c52ce96ee3438c26ef
+    .agents/skills/prepare-deployment/check_destination.py:
+      sha3_256: 34ff49ae54a875f34f7900612d76b31d7aaf00926cc80c40d689474af4d447ec
+    .agents/skills/prepare-deployment/deployment-module.md:
+      sha3_256: 7febda25e999ddd05551036eeff285758fef41c7a25ec7dedd41dfc2f1151d24
+    .agents/skills/setup-runtime/SKILL.md:
+      sha3_256: ee6888e0cbefde7907599cb0ecd9907ab6a5edd789c6119a406ccf7fc1180ace
+    .agents/skills/dlthub-platform-profiles/SKILL.md:
+      sha3_256: 6aeeec113fa5490e30f3d977b799af5565a37cceb1a0d2a7731dd3be3bbd8b45
+    .agents/skills/dlthub-platform-workflow/SKILL.md:
+      sha3_256: ea6d1b77cc5f0588d2611ec9f37dac25e6d8df2be3492b1f2cef880248214412
